@@ -9,8 +9,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var viewModel: ViewModel
+    
     var body: some View {
-        Text("Hello, World!")
+        NavigationView {
+            FirstPageView().environmentObject(FirstPageViewModel())
+        }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
