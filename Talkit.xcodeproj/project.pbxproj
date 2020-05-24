@@ -19,6 +19,7 @@
 		EFA25D662472297000769E34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFA25D642472297000769E34 /* LaunchScreen.storyboard */; };
 		EFA25D6F24722BC600769E34 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFA25D6E24722BC600769E34 /* Photos.framework */; };
 		EFD8D39E2478CF1C00BF9D5A /* PageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8D39D2478CF1C00BF9D5A /* PageTitleView.swift */; };
+		EFD8D3A0247A23B700BF9D5A /* ImagesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8D39F247A23B700BF9D5A /* ImagesList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		EFA25D672472297000769E34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EFA25D6E24722BC600769E34 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		EFD8D39D2478CF1C00BF9D5A /* PageTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTitleView.swift; sourceTree = "<group>"; };
+		EFD8D39F247A23B700BF9D5A /* ImagesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 			children = (
 				EF1EA0EC2476E32200E82C1A /* FirstPageView.swift */,
 				EF1EA0F12476E69400E82C1A /* FirstPageViewModel.swift */,
+				EFD8D39F247A23B700BF9D5A /* ImagesList.swift */,
 			);
 			path = First;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFD8D39E2478CF1C00BF9D5A /* PageTitleView.swift in Sources */,
+				EFD8D3A0247A23B700BF9D5A /* ImagesList.swift in Sources */,
 				EF1EA0ED2476E32200E82C1A /* FirstPageView.swift in Sources */,
 				EFA25D5A2472296C00769E34 /* AppDelegate.swift in Sources */,
 				EF1EA0F22476E69500E82C1A /* FirstPageViewModel.swift in Sources */,

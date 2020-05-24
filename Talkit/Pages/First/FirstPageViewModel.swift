@@ -11,7 +11,7 @@ import Combine
 import class UIKit.UIImage
 
 final class FirstPageViewModel: ObservableObject {
-    @Published var images: [[(String, UIImage)]] = []
+    @Published var images: [UIImage] = []
     
     init() {
         fetchImages()
@@ -31,17 +31,8 @@ private extension FirstPageViewModel {
             Asset.ExamplePhotos.schwarzenegger,
             Asset.ExamplePhotos.trump,
         ]
-        .map { ($0.name, $0.image) }
-        .chunked(into: 3)
+        .map { $0.image }
         
         images.append(contentsOf: array)
-    }
-}
-
-private extension Array {
-    func chunked(into size: Int) -> [[Element]] {
-        return stride(from: 0, to: count, by: size).map {
-            Array(self[$0 ..< Swift.min($0 + size, count)])
-        }
     }
 }
