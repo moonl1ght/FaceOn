@@ -9,13 +9,18 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var viewModel: ViewModel
-    
     var body: some View {
         NavigationView {
-            FirstPageView().environmentObject(FirstPageViewModel())
+            VStack {
+                Spacer(minLength: 81)
+
+                FirstPageView().environmentObject(FirstPageViewModel())
+            }
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+            .background(Color.offWhite)
+            .edgesIgnoringSafeArea(.all)
         }
-        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
 }
 

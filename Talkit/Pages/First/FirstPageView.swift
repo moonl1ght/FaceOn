@@ -12,7 +12,7 @@ struct FirstPageView: View {
     @EnvironmentObject var viewModel: FirstPageViewModel
     
     var body: some View {
-        VStack(alignment: .center, spacing: 12) {
+        VStack(alignment: .center, spacing: 50) {
             HStack(alignment: .top) {
                 PageTitleView(title: "1. select an image".uppercased())
                 .frame(maxWidth: 290)
@@ -20,19 +20,17 @@ struct FirstPageView: View {
                 Spacer()
             }
             
-            ImagesList(images: self.viewModel.images) {
-                print($0)
+            VStack(alignment: .center, spacing: 21) {
+                ImagesList(images: self.viewModel.images) {
+                    print($0)
+                }
+                
+                NeumorphicPlusButton(systemImageName: "plus", buttonInnerPadding: 30) {}
             }
             .padding()
             
-            plusButton
-            
             Spacer()
         }
-    }
-    
-    var plusButton: some View {
-        Text("plus here")
     }
 }
 
