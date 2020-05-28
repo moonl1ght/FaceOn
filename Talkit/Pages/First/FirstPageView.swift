@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct FirstPageView: View {
-    @EnvironmentObject var viewModel: FirstPageViewModel
+    @ObservedObject var viewModel: FirstPageViewModel
     
     var body: some View {
         VStack(alignment: .center, spacing: 50) {
@@ -24,18 +24,31 @@ struct FirstPageView: View {
                 ImagesList(images: self.viewModel.images) {
                     print($0)
                 }
+                .edgesIgnoringSafeArea([.leading, .trailing])
                 
                 NeumorphicPlusButton(systemImageName: "plus", buttonInnerPadding: 30) {}
+            }
+            
+            Spacer()
+            
+            HStack {
+                Spacer()
+                
+                NavigationLink(destination: ThirdPageView(viewModel: .init())) {
+                    UnerlinedText(text: "Next".uppercased())
+                }
             }
             .padding()
             
             Spacer()
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
 }
 
 struct FirstPageView_Previews: PreviewProvider {
     static var previews: some View {
-        FirstPageView()
+        FirstPageView(viewModel: .init())
     }
 }

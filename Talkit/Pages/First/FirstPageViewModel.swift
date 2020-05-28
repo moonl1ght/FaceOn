@@ -20,19 +20,28 @@ final class FirstPageViewModel: ObservableObject {
 
 private extension FirstPageViewModel {
     func fetchImages() {
-        let array = [
-            Asset.ExamplePhotos.einstein,
-            Asset.ExamplePhotos.eminem,
-            Asset.ExamplePhotos.jobs,
-            Asset.ExamplePhotos.mona,
-            Asset.ExamplePhotos.obama,
-            Asset.ExamplePhotos.potter,
-            Asset.ExamplePhotos.ronaldo,
-            Asset.ExamplePhotos.schwarzenegger,
-            Asset.ExamplePhotos.trump,
-        ]
-        .map { $0.image }
-        
-        images.append(contentsOf: array)
+        images.append(
+            contentsOf: [
+                Asset.ExamplePhotos.bezos,
+                Asset.ExamplePhotos.billy,
+                Asset.ExamplePhotos.edsheeran,
+                Asset.ExamplePhotos.einstein,
+                Asset.ExamplePhotos.eminem,
+                Asset.ExamplePhotos.jobs,
+                Asset.ExamplePhotos.kanye,
+                Asset.ExamplePhotos.kim1,
+                Asset.ExamplePhotos.kim2,
+                Asset.ExamplePhotos.mona,
+                Asset.ExamplePhotos.musk,
+                Asset.ExamplePhotos.obama,
+                Asset.ExamplePhotos.potter,
+                Asset.ExamplePhotos.ronaldo,
+                Asset.ExamplePhotos.schwarz,
+                Asset.ExamplePhotos.takeshi,
+                Asset.ExamplePhotos.trump,
+                Asset.ExamplePhotos.zuck,
+            ]
+            .map { $0.image }
+        )
     }
 }

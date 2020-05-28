@@ -11,14 +11,11 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            VStack {
-                Spacer(minLength: 81)
-
-                FirstPageView().environmentObject(FirstPageViewModel())
+            ZStack {
+                Color.offWhite.edgesIgnoringSafeArea(.all)
+                
+                FirstPageView(viewModel: .init())
             }
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-            .background(Color.offWhite)
-            .edgesIgnoringSafeArea(.all)
         }
         .navigationBarHidden(true)
     }

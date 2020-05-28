@@ -11,7 +11,7 @@ import SwiftUI
 struct ImagesList: View {
     init(
         images: [UIImage],
-        imagesPerRow: Int = 3,
+        imagesPerRow: Int = 6,
         allowMultipleSelections: Bool = false,
         _ handler: @escaping (Int) -> Void
     ) {
@@ -21,6 +21,15 @@ struct ImagesList: View {
     }
     
     var body: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            images.padding([.leading, .trailing])
+
+        }
+        .shadow(color: Color.black.opacity(0.2), radius: 10, x: 5, y: 5)
+        .shadow(color: Color.white, radius: 7, x: -5, y: -5)
+    }
+    
+    private var images: some View {
         VStack(alignment: .center, spacing: 20) {
             ForEach(0 ..< rowsModels.count) { i in
                 Row(items: self.rowsModels[i]) { index in
@@ -64,7 +73,7 @@ private extension ImagesList {
                     .resizable()
                     .frame(width: 94, height: 94, alignment: .center)
                     .cornerRadius(15)
-                    .shadow(radius: 7)
+                    .shadow(radius: 4)
                     .overlay(
                         RoundedRectangle(cornerRadius: 15)
                         .stroke(
@@ -100,19 +109,19 @@ private extension Array where Element == UIImage {
 
 struct ImagesList_Previews: PreviewProvider {
     static var previews: some View {
-        let array = [
-            Asset.ExamplePhotos.einstein,
-            Asset.ExamplePhotos.eminem,
-            Asset.ExamplePhotos.jobs,
-            Asset.ExamplePhotos.mona,
-            Asset.ExamplePhotos.obama,
-            Asset.ExamplePhotos.potter,
-            Asset.ExamplePhotos.ronaldo,
-            Asset.ExamplePhotos.schwarzenegger,
-            Asset.ExamplePhotos.trump,
-        ]
-        .map { $0.image }
+//        let array = [
+//            Asset.ExamplePhotos.einstein,
+//            Asset.ExamplePhotos.eminem,
+//            Asset.ExamplePhotos.jobs,
+//            Asset.ExamplePhotos.mona,
+//            Asset.ExamplePhotos.obama,
+//            Asset.ExamplePhotos.potter,
+//            Asset.ExamplePhotos.ronaldo,
+//            Asset.ExamplePhotos.schwarzenegger,
+//            Asset.ExamplePhotos.trump,
+//        ]
+//        .map { $0.image }
         
-        return ImagesList(images: array) { _ in }
+        return ImagesList(images: []) { _ in }
     }
 }

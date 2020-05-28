@@ -20,15 +20,24 @@
 public enum Asset {
   public enum ExamplePhotos {
 
+    public static let bezos = ImageAsset(name: "bezos")
+    public static let billy = ImageAsset(name: "billy")
+    public static let edsheeran = ImageAsset(name: "edsheeran")
     public static let einstein = ImageAsset(name: "einstein")
     public static let eminem = ImageAsset(name: "eminem")
     public static let jobs = ImageAsset(name: "jobs")
+    public static let kanye = ImageAsset(name: "kanye")
+    public static let kim1 = ImageAsset(name: "kim1")
+    public static let kim2 = ImageAsset(name: "kim2")
     public static let mona = ImageAsset(name: "mona")
+    public static let musk = ImageAsset(name: "musk")
     public static let obama = ImageAsset(name: "obama")
     public static let potter = ImageAsset(name: "potter")
     public static let ronaldo = ImageAsset(name: "ronaldo")
-    public static let schwarzenegger = ImageAsset(name: "schwarzenegger")
+    public static let schwarz = ImageAsset(name: "schwarz")
+    public static let takeshi = ImageAsset(name: "takeshi")
     public static let trump = ImageAsset(name: "trump")
+    public static let zuck = ImageAsset(name: "zuck")
   }
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name

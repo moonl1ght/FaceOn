@@ -19,12 +19,12 @@ struct PageTitleView: View {
                 maxHeight: 20,
                 alignment: .bottom
             )
-            .offset(y: 10)
+            .offset(y: 9)
             
             Text(self.title)
             .lineLimit(1)
             .truncationMode(.tail)
-            .font(Font.title.bold())
+            .font(Font.title.italic().bold())
             .frame(
                 alignment: .center
             )

@@ -10,6 +10,9 @@
 		EF1EA0ED2476E32200E82C1A /* FirstPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1EA0EC2476E32200E82C1A /* FirstPageView.swift */; };
 		EF1EA0F02476E5AE00E82C1A /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1EA0EF2476E5AE00E82C1A /* Assets.swift */; };
 		EF1EA0F22476E69500E82C1A /* FirstPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1EA0F12476E69400E82C1A /* FirstPageViewModel.swift */; };
+		EF38CFAF247F61FF00BFCFA1 /* ThirdPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38CFAE247F61FF00BFCFA1 /* ThirdPageView.swift */; };
+		EF38CFB6247F63E300BFCFA1 /* UnerlinedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38CFB5247F63E300BFCFA1 /* UnerlinedText.swift */; };
+		EF38CFB8247F647B00BFCFA1 /* ThirdPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38CFB7247F647B00BFCFA1 /* ThirdPageViewModel.swift */; };
 		EFA25D5A2472296C00769E34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA25D592472296C00769E34 /* AppDelegate.swift */; };
 		EFA25D5C2472296C00769E34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA25D5B2472296C00769E34 /* SceneDelegate.swift */; };
 		EFA25D5E2472296C00769E34 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA25D5D2472296C00769E34 /* ContentView.swift */; };
@@ -27,6 +30,9 @@
 		EF1EA0EC2476E32200E82C1A /* FirstPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageView.swift; sourceTree = "<group>"; };
 		EF1EA0EF2476E5AE00E82C1A /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		EF1EA0F12476E69400E82C1A /* FirstPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageViewModel.swift; sourceTree = "<group>"; };
+		EF38CFAE247F61FF00BFCFA1 /* ThirdPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPageView.swift; sourceTree = "<group>"; };
+		EF38CFB5247F63E300BFCFA1 /* UnerlinedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnerlinedText.swift; sourceTree = "<group>"; };
+		EF38CFB7247F647B00BFCFA1 /* ThirdPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPageViewModel.swift; sourceTree = "<group>"; };
 		EFA25D562472296C00769E34 /* Talkit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Talkit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA25D592472296C00769E34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFA25D5B2472296C00769E34 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +63,8 @@
 		EF1EA0EA2476DDBA00E82C1A /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				EF38CFAD247F611B00BFCFA1 /* Third */,
+				EF38CFAC247F611200BFCFA1 /* Second */,
 				EF1EA0EB2476DDE700E82C1A /* First */,
 			);
 			path = Pages;
@@ -70,6 +78,22 @@
 				EFD8D39F247A23B700BF9D5A /* ImagesList.swift */,
 			);
 			path = First;
+			sourceTree = "<group>";
+		};
+		EF38CFAC247F611200BFCFA1 /* Second */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Second;
+			sourceTree = "<group>";
+		};
+		EF38CFAD247F611B00BFCFA1 /* Third */ = {
+			isa = PBXGroup;
+			children = (
+				EF38CFAE247F61FF00BFCFA1 /* ThirdPageView.swift */,
+				EF38CFB7247F647B00BFCFA1 /* ThirdPageViewModel.swift */,
+			);
+			path = Third;
 			sourceTree = "<group>";
 		};
 		EFA25D4D2472296C00769E34 = {
@@ -136,6 +160,7 @@
 			children = (
 				EFD8D39D2478CF1C00BF9D5A /* PageTitleView.swift */,
 				EFD8D3A1247B1F2800BF9D5A /* PlusButton.swift */,
+				EF38CFB5247F63E300BFCFA1 /* UnerlinedText.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -251,9 +276,12 @@
 			files = (
 				EFD8D39E2478CF1C00BF9D5A /* PageTitleView.swift in Sources */,
 				EFD8D3A6247B211D00BF9D5A /* Colors.swift in Sources */,
+				EF38CFB8247F647B00BFCFA1 /* ThirdPageViewModel.swift in Sources */,
 				EFD8D3A0247A23B700BF9D5A /* ImagesList.swift in Sources */,
 				EF1EA0ED2476E32200E82C1A /* FirstPageView.swift in Sources */,
 				EFA25D5A2472296C00769E34 /* AppDelegate.swift in Sources */,
+				EF38CFB6247F63E300BFCFA1 /* UnerlinedText.swift in Sources */,
+				EF38CFAF247F61FF00BFCFA1 /* ThirdPageView.swift in Sources */,
 				EF1EA0F22476E69500E82C1A /* FirstPageViewModel.swift in Sources */,
 				EF1EA0F02476E5AE00E82C1A /* Assets.swift in Sources */,
 				EFA25D5C2472296C00769E34 /* SceneDelegate.swift in Sources */,
