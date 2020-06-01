@@ -10,6 +10,10 @@
 		EF1EA0ED2476E32200E82C1A /* FirstPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1EA0EC2476E32200E82C1A /* FirstPageView.swift */; };
 		EF1EA0F02476E5AE00E82C1A /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1EA0EF2476E5AE00E82C1A /* Assets.swift */; };
 		EF1EA0F22476E69500E82C1A /* FirstPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1EA0F12476E69400E82C1A /* FirstPageViewModel.swift */; };
+		EF37152B24832CF60007013E /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF37152A24832CF60007013E /* Permissions.swift */; };
+		EF37152F248464490007013E /* DeviceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF37152E248464490007013E /* DeviceProvider.swift */; };
+		EF3715322484649D0007013E /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3715312484649D0007013E /* Result.swift */; };
+		EF3715362484730D0007013E /* SessionMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3715352484730D0007013E /* SessionMediator.swift */; };
 		EF38CFAF247F61FF00BFCFA1 /* ThirdPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38CFAE247F61FF00BFCFA1 /* ThirdPageView.swift */; };
 		EF38CFB6247F63E300BFCFA1 /* UnerlinedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38CFB5247F63E300BFCFA1 /* UnerlinedText.swift */; };
 		EF38CFB8247F647B00BFCFA1 /* ThirdPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38CFB7247F647B00BFCFA1 /* ThirdPageViewModel.swift */; };
@@ -80,6 +84,14 @@
 			path = First;
 			sourceTree = "<group>";
 		};
+		EF371530248464910007013E /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				EF3715312484649D0007013E /* Result.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
 		EF38CFAC247F611200BFCFA1 /* Second */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +104,9 @@
 			children = (
 				EF38CFAE247F61FF00BFCFA1 /* ThirdPageView.swift */,
 				EF38CFB7247F647B00BFCFA1 /* ThirdPageViewModel.swift */,
+				EF37152A24832CF60007013E /* Permissions.swift */,
+				EF37152E248464490007013E /* DeviceProvider.swift */,
+				EF3715352484730D0007013E /* SessionMediator.swift */,
 			);
 			path = Third;
 			sourceTree = "<group>";
@@ -168,6 +183,7 @@
 		EFD8D3A3247B210B00BF9D5A /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				EF371530248464910007013E /* Foundation */,
 				EFD8D3A4247B211200BF9D5A /* UI */,
 			);
 			path = Extension;
@@ -274,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF37152B24832CF60007013E /* Permissions.swift in Sources */,
 				EFD8D39E2478CF1C00BF9D5A /* PageTitleView.swift in Sources */,
 				EFD8D3A6247B211D00BF9D5A /* Colors.swift in Sources */,
 				EF38CFB8247F647B00BFCFA1 /* ThirdPageViewModel.swift in Sources */,
@@ -282,9 +299,13 @@
 				EFA25D5A2472296C00769E34 /* AppDelegate.swift in Sources */,
 				EF38CFB6247F63E300BFCFA1 /* UnerlinedText.swift in Sources */,
 				EF38CFAF247F61FF00BFCFA1 /* ThirdPageView.swift in Sources */,
+				EF37152F248464490007013E /* DeviceProvider.swift in Sources */,
+				EF3715362484730D0007013E /* SessionMediator.swift in Sources */,
 				EF1EA0F22476E69500E82C1A /* FirstPageViewModel.swift in Sources */,
 				EF1EA0F02476E5AE00E82C1A /* Assets.swift in Sources */,
 				EFA25D5C2472296C00769E34 /* SceneDelegate.swift in Sources */,
+				EF3715322484649D0007013E /* Result.swift in Sources */,
+				EF371538248491240007013E /* PreviewContentView.swift in Sources */,
 				EFA25D5E2472296C00769E34 /* ContentView.swift in Sources */,
 				EFD8D3A2247B1F2800BF9D5A /* PlusButton.swift in Sources */,
 			);
