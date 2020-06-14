@@ -10,31 +10,33 @@ import Foundation
 import AVFoundation
 
 final class DeviceProvider {
-    func createVideoDevice() -> Result<AVCaptureDevice, Error> {
+    func createVideoDevice(
+        with position: AVCaptureDevice.Position = .back
+    ) -> Result<AVCaptureDevice, Error> {
         guard
-            let device = AVCaptureDevice.default(
-                .builtInDualCamera,
-                for: .video,
-                position: .unspecified
-            )
+            position != .unspecified,
+            let device = discoverySession.devices.first(where: { $0.position == position })
+        else {
+            return .failure(.creatingDeviceFailure)
+        }
+
+        return .success(device)
+    }
+    
+    func createAudioDevice() -> Result<AVCaptureDevice, Error> {
+        guard
+            let device = AVCaptureDevice.default(for: .audio)
         else {
             return .failure(.creatingDeviceFailure)
         }
         return .success(device)
     }
     
-    func createAudioDevice() -> Result<AVCaptureDevice, Error> {
-        guard
-            let device = AVCaptureDevice.default(
-                .builtInMicrophone,
-                for: .audio,
-                position: .unspecified
-            )
-        else {
-            return .failure(.creatingDeviceFailure)
-        }
-        return .success(device)
-    }
+    private lazy var discoverySession = AVCaptureDevice.DiscoverySession.init(
+        deviceTypes: [.builtInDualCamera, .builtInTrueDepthCamera],
+        mediaType: .video,
+        position: .unspecified
+    )
     
     enum Error: Swift.Error {
         case creatingDeviceFailure

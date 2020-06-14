@@ -10,24 +10,3 @@ import Foundation
 import AVFoundation
 import Combine
 
-final class VideoProcessor {
-    init(
-        mediator: SessionMediator
-    ) {
-        self.mediator = mediator
-    }
-    
-    func configure(_ callback: @escaping () -> Void) {
-        mediator.setup(callback)
-    }
-    
-    func startCapturing() {
-        mediator.startCapturing()
-    }
-    
-    func stopCapturin() {
-        mediator.stopCapturing()
-    }
-    
-    private let mediator: SessionMediator
-}

@@ -14,27 +14,27 @@ import AVFoundation
 // MARK: - Wrapper
 
 final class PreviewViewControllerWrapper: UIViewControllerRepresentable {
-    init(mediator: SessionMediator) {
-        self.mediator = mediator
+    init(_ sessionProvider: SessionProvider) {
+        self.sessionProvider = sessionProvider
     }
     
     func makeUIViewController(context: Context) -> PreviewViewController {
-        .init(mediator: mediator)
+        .init(sessionProvider: sessionProvider)
     }
     
     func updateUIViewController(_ uiViewController: PreviewViewController, context: Context) {}
     
-    private let mediator: SessionMediator
+    private let sessionProvider: SessionProvider
 }
 
 // MARK: - Controller
 
 final class PreviewViewController: UIViewController {
     init(
-        mediator: SessionMediator,
+        sessionProvider: SessionProvider,
         notificationCenter: NotificationCenter = .default
     ) {
-        self.mediator = mediator
+        self.sessionProvider = sessionProvider
         self.notificationCenter = notificationCenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -44,19 +44,12 @@ final class PreviewViewController: UIViewController {
     }
     
     override func loadView() {
-        let customView = VideRenderingView(session: mediator.session)
+        let customView = VideRenderingView(session: sessionProvider.session)
         setup(customView)
         view = customView
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        mediator.setup {
-            self.mediator.startCapturing()
-        }
-    }
-    
-    private let mediator: SessionMediator
+    private let sessionProvider: SessionProvider
     private let notificationCenter: NotificationCenter
     
     private var cancellables = Set<AnyCancellable>()
