@@ -13,20 +13,20 @@ struct CircleProgress: View {
     
     var body: some View {
         ZStack {
-            GeometryReader { geomentry in
+            GeometryReader { geometry in
                 self.circle
                 .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
                 .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
                 
                 self.circle
                 
-                RoundedButton(action: {})
+                RoundedButton(action: { print($0) })
                 .frame(
-                    width: geomentry.frame(in: .local).width.advanced(by: -20)
+                    width: geometry.frame(in: .local).width.advanced(by: -20)
                 )
                 .position(
-                    x: geomentry.frame(in: .local).midX,
-                    y: geomentry.frame(in: .local).midY
+                    x: geometry.frame(in: .local).midX,
+                    y: geometry.frame(in: .local).midY
                 )
             }
         }

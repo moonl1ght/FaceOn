@@ -12,12 +12,15 @@ import Combine
 
 protocol Configurable: AnyObject {
     typealias ConfigurationCompletionHandler = () -> Void
+    
+    var isConfigured: Bool { get }
+    
     func configure(_ completionHandler: @escaping ConfigurationCompletionHandler)
 }
 
 final class SessionConfigurator: Configurable, OutputProvider, SessionProvider {
     typealias Inputs = (video: AVCaptureDeviceInput, audio: AVCaptureDeviceInput)
-    
+
     init(
         permissions: Permissions = .init(),
         deviceProvider: DeviceProvider = .init()
@@ -32,12 +35,15 @@ final class SessionConfigurator: Configurable, OutputProvider, SessionProvider {
     private var state: State = .initial
     private var cancellables = Set<AnyCancellable>()
 
+    private(set) var isConfigured = false
     private(set) lazy var output = AVCaptureMovieFileOutput()
     private(set) lazy var session = AVCaptureSession()
 }
 
 extension SessionConfigurator {
     func configure(_ completionHandler: @escaping ConfigurationCompletionHandler) {
+        guard isConfigured == false else { return completionHandler() }
+        
         checkPermissions().flatMap { self.createDevices() }
         .sink(
             receiveCompletion: { result in
@@ -46,6 +52,7 @@ extension SessionConfigurator {
                 }
             },
             receiveValue: {
+                self.isConfigured.toggle()
                 self.configureSession(with: $0, completionHandler: completionHandler)
             }
         )

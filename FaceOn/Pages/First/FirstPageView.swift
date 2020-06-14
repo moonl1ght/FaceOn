@@ -12,7 +12,20 @@ struct FirstPageView: View {
     @ObservedObject var viewModel: FirstPageViewModel
     
     var body: some View {
+        NavigationView {
+            ZStack {
+                Color.offWhite.edgesIgnoringSafeArea(.all)
+                
+                content
+            }
+        }
+        .preferredColorScheme(.light)
+    }
+    
+    private var content: some View {
         VStack(alignment: .center, spacing: 50) {
+            Spacer(minLength: 60)
+            
             HStack(alignment: .top) {
                 PageTitleView(title: "1. select an image".uppercased())
                 .frame(maxWidth: 290)
@@ -29,8 +42,6 @@ struct FirstPageView: View {
                 NeumorphicPlusButton(systemImageName: "plus", buttonInnerPadding: 30) {}
             }
             
-            Spacer()
-            
             HStack {
                 Spacer()
                 
@@ -44,6 +55,7 @@ struct FirstPageView: View {
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
+        .navigationBarTitle("")
     }
 }
 

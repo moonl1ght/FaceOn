@@ -39,11 +39,11 @@ private struct NeumorphicCircleButtonStyle: ButtonStyle {
 }
 
 struct RoundedButton: View {
-    let action: () -> Void
+    let action: (Bool) -> Void
     
     var body: some View {
-        Button(
-            action: action
+        let button = Button(
+            action: { self.action(false) }
         ) {
             ZStack {
                 Circle()
@@ -55,11 +55,15 @@ struct RoundedButton: View {
             }
         }
         .buttonStyle(NeumorphicCircleButtonStyle())
+        
+        let gesture = LongPressGesture().onChanged(action)
+        
+        return button.simultaneousGesture(gesture)
     }
 }
 
 struct RoundedButton_Previews: PreviewProvider {
     static var previews: some View {
-        RoundedButton {}.frame(width: 130)
+        RoundedButton { _ in }.frame(width: 130)
     }
 }

@@ -10,16 +10,34 @@ import Combine
 import AVFoundation
 
 final class ThirdPageViewModel: ObservableObject {
-    @Published var isConfigured = false
-    let mediator: SessionMediator
+    let sessionProvider: SessionProvider
     
     init(
-        mediator: SessionMediator = .init()
+        _ configurator: SessionConfigurator = .init()
     ) {
-        self.mediator = mediator
+        sessionProvider = configurator
+        runner = .init(configurator)
+        recorder = .init(configurator)
+        self.configurator = configurator
+    }
+
+    private let recorder: Recorder
+    private let runner: Runner
+    private let configurator: Configurable
+
+    private lazy var timerPublisher = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
+    private var cancallables = Set<AnyCancellable>()
+}
+
+extension ThirdPageViewModel {
+    func run() {
+        configurator.configure { [runner] in
+            runner.startRunning()
+        }
     }
     
-    func configure() {
-        guard isConfigured == false else { return }
+    func stop() {
+        runner.stopRunning()
     }
 }
