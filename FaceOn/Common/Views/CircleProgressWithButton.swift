@@ -8,7 +8,8 @@
 
 import SwiftUI
 
-struct CircleProgress: View {
+struct CircleProgressWithButton: View {
+    let action: (Bool) -> Void
     @Binding var progress: Float
     
     var body: some View {
@@ -20,7 +21,7 @@ struct CircleProgress: View {
                 
                 self.circle
                 
-                RoundedButton(action: { print($0) })
+                RoundedButton(action: self.action)
                 .frame(
                     width: geometry.frame(in: .local).width.advanced(by: -20)
                 )
@@ -46,7 +47,7 @@ struct CircleProgress: View {
 
 struct CircleProgress_Previews: PreviewProvider {
     static var previews: some View {
-        CircleProgress(progress: .constant(0.9))
+        CircleProgressWithButton(action: { _ in }, progress: .constant(0.9))
         .frame(width: 132, alignment: .center)
     }
 }

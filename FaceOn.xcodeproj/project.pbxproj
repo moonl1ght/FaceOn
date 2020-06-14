@@ -17,7 +17,7 @@
 		EF38CFAF247F61FF00BFCFA1 /* ThirdPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38CFAE247F61FF00BFCFA1 /* ThirdPageView.swift */; };
 		EF38CFB6247F63E300BFCFA1 /* UnerlinedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38CFB5247F63E300BFCFA1 /* UnerlinedText.swift */; };
 		EF38CFB8247F647B00BFCFA1 /* ThirdPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF38CFB7247F647B00BFCFA1 /* ThirdPageViewModel.swift */; };
-		EF76ECB424947048003627D4 /* CircleProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF76ECB324947048003627D4 /* CircleProgress.swift */; };
+		EF76ECB424947048003627D4 /* CircleProgressWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF76ECB324947048003627D4 /* CircleProgressWithButton.swift */; };
 		EF76ECB6249484F2003627D4 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF76ECB5249484F2003627D4 /* RoundedButton.swift */; };
 		EF76ECB824948ACC003627D4 /* LinearGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF76ECB724948ACC003627D4 /* LinearGradient.swift */; };
 		EF9F7599248DA27C00AF09B4 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9F7598248DA27C00AF09B4 /* PreviewViewController.swift */; };
@@ -46,7 +46,7 @@
 		EF38CFAE247F61FF00BFCFA1 /* ThirdPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPageView.swift; sourceTree = "<group>"; };
 		EF38CFB5247F63E300BFCFA1 /* UnerlinedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnerlinedText.swift; sourceTree = "<group>"; };
 		EF38CFB7247F647B00BFCFA1 /* ThirdPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPageViewModel.swift; sourceTree = "<group>"; };
-		EF76ECB324947048003627D4 /* CircleProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgress.swift; sourceTree = "<group>"; };
+		EF76ECB324947048003627D4 /* CircleProgressWithButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressWithButton.swift; sourceTree = "<group>"; };
 		EF76ECB5249484F2003627D4 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		EF76ECB724948ACC003627D4 /* LinearGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearGradient.swift; sourceTree = "<group>"; };
 		EF9F7598248DA27C00AF09B4 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
@@ -200,7 +200,7 @@
 				EFD8D39D2478CF1C00BF9D5A /* PageTitleView.swift */,
 				EFD8D3A1247B1F2800BF9D5A /* PlusButton.swift */,
 				EF38CFB5247F63E300BFCFA1 /* UnerlinedText.swift */,
-				EF76ECB324947048003627D4 /* CircleProgress.swift */,
+				EF76ECB324947048003627D4 /* CircleProgressWithButton.swift */,
 				EF76ECB5249484F2003627D4 /* RoundedButton.swift */,
 			);
 			path = Views;
@@ -334,7 +334,7 @@
 				EF1EA0F02476E5AE00E82C1A /* Assets.swift in Sources */,
 				EF76ECB824948ACC003627D4 /* LinearGradient.swift in Sources */,
 				EF222DC1248DF4AD00F98B67 /* Recorder.swift in Sources */,
-				EF76ECB424947048003627D4 /* CircleProgress.swift in Sources */,
+				EF76ECB424947048003627D4 /* CircleProgressWithButton.swift in Sources */,
 				EFA25D5C2472296C00769E34 /* SceneDelegate.swift in Sources */,
 				EF3715322484649D0007013E /* Result.swift in Sources */,
 				EFE530B224944F5C00CEB13C /* Runner.swift in Sources */,

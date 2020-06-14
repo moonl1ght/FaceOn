@@ -46,8 +46,6 @@ extension Recorder {
                 print(error)
                 self.delegate?.recorder(self, didFinishRecordingWithResult: .failed(error))
             case let .success(pair):
-                let data = FileManager.default.contents(atPath: pair.url.path)
-                print(data ?? "null")
                 self.delegate?.recorder(self, didFinishRecordingWithResult: .successed(pair.url))
             }
         }
@@ -56,10 +54,6 @@ extension Recorder {
         let currentFileURL = createFileURL()
         self.currentFileURL = currentFileURL
         fileOutput.startRecording(to: currentFileURL, recordingDelegate: recordingDelegate)
-        
-        let publisher = Timer.publish(every: 1, on: .main, in: .common)
-        .autoconnect()
-        .map { _ in }
     }
     
     func stop() {

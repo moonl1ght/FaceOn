@@ -57,7 +57,10 @@ struct ThirdPageView: View {
             .padding([.leading, .trailing, .top])
             
             
-            CircleProgress(progress: .constant(0.0))
+            CircleProgressWithButton(
+                action: self.viewModel.action,
+                progress: self.$viewModel.recordingProgress
+            )
             .frame(width: 132)
             
             HStack {
