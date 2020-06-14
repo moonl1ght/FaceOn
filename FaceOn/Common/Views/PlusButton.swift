@@ -58,18 +58,6 @@ struct NeumorphicPlusButton: View {
     }
 }
 
-private extension LinearGradient {
-    init(_ colors: Color...) {
-        self.init(
-            gradient: Gradient(
-                colors: colors
-            ),
-            startPoint: .topLeading,
-            endPoint: .bottomTrailing
-        )
-    }
-}
-
 struct NeumorphicPlusButton_Previews: PreviewProvider {
     static var previews: some View {
         NeumorphicPlusButton(systemImageName: "plus", buttonInnerPadding: 94) {}

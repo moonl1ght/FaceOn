@@ -1,0 +1,52 @@
+//
+//  CircleProgress.swift
+//  FaceOn
+//
+//  Created by Valery Kokanov on 13.06.2020.
+//  Copyright © 2020 Talkit team. All rights reserved.
+//
+
+import SwiftUI
+
+struct CircleProgress: View {
+    @Binding var progress: Float
+    
+    var body: some View {
+        ZStack {
+            GeometryReader { geomentry in
+                self.circle
+                .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
+                .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+                
+                self.circle
+                
+                RoundedButton(action: {})
+                .frame(
+                    width: geomentry.frame(in: .local).width.advanced(by: -20)
+                )
+                .position(
+                    x: geomentry.frame(in: .local).midX,
+                    y: geomentry.frame(in: .local).midY
+                )
+            }
+        }
+    }
+    
+    private var circle: some View {
+        Circle()
+        .trim(from: 0.0, to: CGFloat(min(self.progress, 1.0)))
+        .stroke(
+            style: StrokeStyle(lineWidth: 20, lineCap: .butt, lineJoin: .bevel)
+        )
+        .fill(Color.offWhite)
+        .rotationEffect(Angle(degrees: 270))
+        .animation(.linear)
+    }
+}
+
+struct CircleProgress_Previews: PreviewProvider {
+    static var previews: some View {
+        CircleProgress(progress: .constant(0.9))
+        .frame(width: 132, alignment: .center)
+    }
+}
