@@ -13,8 +13,23 @@ import AVFoundation
 final class ThirdPageViewModel: ObservableObject {
     let sessionProvider: SessionProvider
     
-    let action: (Bool) -> Void = { inProgress in
-        print(inProgress)
+    lazy var action: (Bool) -> Void = { inProgress in
+        let source = self.progressPublisher.makeConnectable().autoconnect()
+        
+        let progressSource = source.assign(to: \.recordingProgress, on: self)
+        
+        let startingSource = source.prefix(1).handleEvents(
+            receiveCancel: { print("finish record") }
+        )
+        .sink(receiveValue: { _ in print("start record") })
+        
+        if inProgress == false {
+            self.cancallables.remove(startingSource)
+            self.cancallables.remove(progressSource)
+        } else {
+            startingSource.store(in: &self.cancallables)
+            progressSource.store(in: &self.cancallables)
+        }
     }
     
     @Published var recordingProgress: Float
@@ -57,12 +72,6 @@ extension ThirdPageViewModel {
         configurator.configure { [runner] in
             runner.startRunning()
         }
-        
-        progressPublisher.sink(
-            receiveCompletion: { _ in print("stop") },
-            receiveValue: { self.recordingProgress = $0 }
-        )
-        .store(in: &cancallables)
     }
     
     func stop() {
