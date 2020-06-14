@@ -20,6 +20,7 @@
 		EF76ECB424947048003627D4 /* CircleProgressWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF76ECB324947048003627D4 /* CircleProgressWithButton.swift */; };
 		EF76ECB6249484F2003627D4 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF76ECB5249484F2003627D4 /* RoundedButton.swift */; };
 		EF76ECB824948ACC003627D4 /* LinearGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF76ECB724948ACC003627D4 /* LinearGradient.swift */; };
+		EF76ECBC2496E2FA003627D4 /* ChangeCameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF76ECBB2496E2F9003627D4 /* ChangeCameraButton.swift */; };
 		EF9F7599248DA27C00AF09B4 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9F7598248DA27C00AF09B4 /* PreviewViewController.swift */; };
 		EFA25D5A2472296C00769E34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA25D592472296C00769E34 /* AppDelegate.swift */; };
 		EFA25D5C2472296C00769E34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA25D5B2472296C00769E34 /* SceneDelegate.swift */; };
@@ -49,6 +50,7 @@
 		EF76ECB324947048003627D4 /* CircleProgressWithButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressWithButton.swift; sourceTree = "<group>"; };
 		EF76ECB5249484F2003627D4 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		EF76ECB724948ACC003627D4 /* LinearGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearGradient.swift; sourceTree = "<group>"; };
+		EF76ECBB2496E2F9003627D4 /* ChangeCameraButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCameraButton.swift; sourceTree = "<group>"; };
 		EF9F7598248DA27C00AF09B4 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		EFA25D562472296C00769E34 /* FaceOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFA25D592472296C00769E34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				EF38CFB5247F63E300BFCFA1 /* UnerlinedText.swift */,
 				EF76ECB324947048003627D4 /* CircleProgressWithButton.swift */,
 				EF76ECB5249484F2003627D4 /* RoundedButton.swift */,
+				EF76ECBB2496E2F9003627D4 /* ChangeCameraButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				EFD8D39E2478CF1C00BF9D5A /* PageTitleView.swift in Sources */,
 				EF9F7599248DA27C00AF09B4 /* PreviewViewController.swift in Sources */,
 				EFD8D3A6247B211D00BF9D5A /* Colors.swift in Sources */,
+				EF76ECBC2496E2FA003627D4 /* ChangeCameraButton.swift in Sources */,
 				EF76ECB6249484F2003627D4 /* RoundedButton.swift in Sources */,
 				EFE530B4249450A900CEB13C /* SessionConfigurator.swift in Sources */,
 				EF38CFB8247F647B00BFCFA1 /* ThirdPageViewModel.swift in Sources */,

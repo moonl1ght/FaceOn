@@ -49,7 +49,7 @@ struct ThirdPageView: View {
             .padding()
             
             HStack(alignment: .center) {
-                Text("Rotate")
+                ChangeCameraButton { self.viewModel.rotate() }
                 Spacer()
                 Text("mp4")
                 Text("gif")

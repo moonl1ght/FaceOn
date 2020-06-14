@@ -77,4 +77,6 @@ extension ThirdPageViewModel {
     func stop() {
         runner.stopRunning()
     }
+    
+    func rotate() {}
 }
