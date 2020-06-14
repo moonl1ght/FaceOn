@@ -33,19 +33,19 @@ final class ThirdPageViewModel: ObservableObject {
     private let runner: Runner
     private let configurator: Configurable
 
-    private lazy var timerPublisher = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
+    private lazy var timerPublisher = Timer.publish(every: 0.25, on: .main, in: .common).autoconnect()
 
     private var cancallables = Set<AnyCancellable>()
     
     private var progressPublisher: AnyPublisher<Float, Never> {
         var progress = 0
-        let limit = 30
+        let limit = 150
         
         return timerPublisher
         .prefix(limit)
         .map { _ in }
         .handleEvents(
-            receiveOutput: { progress += 1}
+            receiveOutput: { progress += 1 }
         )
         .map { Float((progress * 100) / limit) / 100 }
         .eraseToAnyPublisher()

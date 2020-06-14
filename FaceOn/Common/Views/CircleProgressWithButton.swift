@@ -41,7 +41,7 @@ struct CircleProgressWithButton: View {
         )
         .fill(Color.offWhite)
         .rotationEffect(Angle(degrees: 270))
-        .animation(.linear)
+        .animation(.linear(duration: 1))
     }
 }
 
