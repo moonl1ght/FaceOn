@@ -30,7 +30,7 @@ struct ThirdPageView: View {
     }
     
     private var content: some View {
-        VStack(alignment: .center, spacing: 2) {
+        VStack(alignment: .center) {
             Spacer(minLength: 60)
             
             HStack(alignment: .top) {
