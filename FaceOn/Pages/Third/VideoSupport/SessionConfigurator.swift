@@ -16,6 +16,7 @@ protocol Configurable: AnyObject {
     var isConfigured: Bool { get }
     
     func configure(_ completionHandler: @escaping ConfigurationCompletionHandler)
+    func changeCamera()
 }
 
 final class SessionConfigurator: Configurable, OutputProvider, SessionProvider {
@@ -34,6 +35,7 @@ final class SessionConfigurator: Configurable, OutputProvider, SessionProvider {
     
     private var state: State = .initial
     private var cancellables = Set<AnyCancellable>()
+    private var currentCameraType: CurrentCameraType = .back
 
     private(set) var isConfigured = false
     private(set) lazy var output = AVCaptureMovieFileOutput()
@@ -45,6 +47,7 @@ extension SessionConfigurator {
         guard isConfigured == false else { return completionHandler() }
         
         checkPermissions().flatMap { self.createDevices() }
+        .subscribe(on: DispatchQueue.global(qos: .userInitiated))
         .sink(
             receiveCompletion: { result in
                 if case let .failure(reason) = result {
@@ -52,11 +55,20 @@ extension SessionConfigurator {
                 }
             },
             receiveValue: {
-                self.isConfigured.toggle()
+                self.removeVideoInput()
                 self.configureSession(with: $0, completionHandler: completionHandler)
+                self.isConfigured.toggle()
             }
         )
         .store(in: &cancellables)
+    }
+    
+    func changeCamera() {
+        cancellables.removeAll(keepingCapacity: true)
+        isConfigured = false
+        currentCameraType.toggle()
+        
+        self.configure {}
     }
 }
 
@@ -75,7 +87,8 @@ private extension SessionConfigurator {
     }
     
     func createDevices() -> AnyPublisher<Inputs, Error> {
-        let videoSource = deviceProvider.createVideoDevice().publisher
+        let position = currentCameraType.asAVPosition()
+        let videoSource = deviceProvider.createVideoDevice(with: position).publisher
         let audioSource = deviceProvider.createAudioDevice().publisher
         
         return Publishers.Zip(videoSource, audioSource)
@@ -105,13 +118,13 @@ private extension SessionConfigurator {
         }
 
         session.commitConfiguration()
+        
         completionHandler()
     }
     
     func removeVideoInput() {
-        session.beginConfiguration()
-        defer { session.commitConfiguration() }
         guard
+            session.inputs.isEmpty == false,
             let input = (
                 session.inputs
                 .lazy
@@ -124,7 +137,9 @@ private extension SessionConfigurator {
                 )
             )
         else { return }
+        session.beginConfiguration()
         session.removeInput(input)
+        session.commitConfiguration()
     }
 }
 
@@ -134,6 +149,19 @@ private extension SessionConfigurator {
         case running
         case stopped
         case notAuthorized
+    }
+    
+    enum CurrentCameraType: Int {
+        case back = 1
+        case front
+        
+        mutating func toggle() {
+            self = self == .back ? .front : .back
+        }
+        
+        func asAVPosition() -> AVCaptureDevice.Position {
+            AVCaptureDevice.Position(rawValue: self.rawValue) ?? .unspecified
+        }
     }
     
     enum Error: LocalizedError {

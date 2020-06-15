@@ -78,5 +78,7 @@ extension ThirdPageViewModel {
         runner.stopRunning()
     }
     
-    func rotate() {}
+    func rotate() {
+        configurator.changeCamera()
+    }
 }
