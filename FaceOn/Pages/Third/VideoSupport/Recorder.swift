@@ -31,25 +31,23 @@ final class Recorder {
     
     private lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
+        formatter.dateStyle = .long
+        formatter.timeStyle = .medium
         return formatter
     }()
     
-    private lazy var recordingDelegate = Delegate()
+    private lazy var recordingDelegate = Delegate { result in
+        switch result {
+        case let .failure(error):
+            self.delegate?.recorder(self, didFinishRecordingWithResult: .failed(error))
+        case let .success(pair):
+            self.delegate?.recorder(self, didFinishRecordingWithResult: .successed(pair.url))
+        }
+    }
 }
 
 extension Recorder {
     func start() {
-        recordingDelegate.callback = { result in
-            switch result {
-            case let .failure(error):
-                print(error)
-                self.delegate?.recorder(self, didFinishRecordingWithResult: .failed(error))
-            case let .success(pair):
-                self.delegate?.recorder(self, didFinishRecordingWithResult: .successed(pair.url))
-            }
-        }
-        
         if fileOutput.isRecording { fileOutput.stopRecording() }
         let currentFileURL = createFileURL()
         self.currentFileURL = currentFileURL
@@ -58,7 +56,6 @@ extension Recorder {
     
     func stop() {
         fileOutput.stopRecording()
-        recordingDelegate.callback = nil
     }
 }
 
@@ -72,7 +69,13 @@ private extension Recorder {
 
 extension Recorder {
     final class Delegate: NSObject, AVCaptureFileOutputRecordingDelegate {
-        var callback: ((Result<(output: AVCaptureFileOutput, url: URL), AVError>) -> Void)?
+        typealias Callback = (Result<(output: AVCaptureFileOutput, url: URL), Error>) -> Void
+        
+        let callback: Callback
+        
+        init(_ callback: @escaping Callback) {
+            self.callback = callback
+        }
         
         func fileOutput(
             _ output: AVCaptureFileOutput,
@@ -80,14 +83,11 @@ extension Recorder {
             from connections: [AVCaptureConnection],
             error: Error?
         ) {
-            guard let callback = callback else { return }
-            if
-                let error = error,
-                let avError = error as? AVError
-            {
-                callback(.failure(avError))
+            if let error = error {
+                callback(.failure(error))
+            } else {
+                callback(.success((output, outputFileURL)))
             }
-            callback(.success((output, outputFileURL)))
         }
     }
     

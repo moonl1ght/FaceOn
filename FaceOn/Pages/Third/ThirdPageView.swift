@@ -49,7 +49,7 @@ struct ThirdPageView: View {
             .padding()
             
             HStack(alignment: .center) {
-                ChangeCameraButton { self.viewModel.rotate() }
+                rotateButton
                 Spacer()
                 Text("mp4")
                 Text("gif")
@@ -80,6 +80,15 @@ struct ThirdPageView: View {
             
             Spacer()
         }
+    }
+    
+    private var rotateButton: some View {
+        Button(action: viewModel.rotate) {
+            Image(systemName: "arrow.2.squarepath")
+            .resizable()
+            .frame(width: 30, height: 20)
+        }
+        .foregroundColor(.black)
     }
 }
 

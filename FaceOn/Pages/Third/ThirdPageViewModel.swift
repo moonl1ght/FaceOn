@@ -13,15 +13,17 @@ import AVFoundation
 final class ThirdPageViewModel: ObservableObject {
     let sessionProvider: SessionProvider
     
-    lazy var action: (Bool) -> Void = { inProgress in
+    lazy var action: (Bool) -> Void = { [recorder] inProgress in
         let source = self.progressPublisher.makeConnectable().autoconnect()
         
         let progressSource = source.assign(to: \.recordingProgress, on: self)
         
-        let startingSource = source.prefix(1).handleEvents(
-            receiveCancel: { print("finish record") }
+        let startingSource = source.map { _ in }
+        .prefix(1)
+        .handleEvents(
+            receiveCancel: recorder.stop
         )
-        .sink(receiveValue: { _ in print("start record") })
+        .sink(receiveValue: recorder.start)
         
         if inProgress == false {
             self.cancallables.remove(startingSource)
@@ -32,7 +34,10 @@ final class ThirdPageViewModel: ObservableObject {
         }
     }
     
-    @Published var recordingProgress: Float
+    @Published var recordingProgress: Float = 0
+    @Published var isNextEnabled = false
+    @Published var isRecordEnabled = false
+    @Published var statusText = ""
     
     init(
         _ configurator: SessionConfigurator = .init()
@@ -41,7 +46,7 @@ final class ThirdPageViewModel: ObservableObject {
         runner = .init(configurator)
         recorder = .init(configurator)
         self.configurator = configurator
-        recordingProgress = 0
+        recorder.delegate = self
     }
 
     private let recorder: Recorder
@@ -70,15 +75,25 @@ final class ThirdPageViewModel: ObservableObject {
 extension ThirdPageViewModel {
     func run() {
         configurator.configure { [runner] in
+            self.isRecordEnabled = true
             runner.startRunning()
         }
     }
     
     func stop() {
+        recorder.stop()
         runner.stopRunning()
     }
     
     func rotate() {
         configurator.changeCamera()
+    }
+}
+
+extension ThirdPageViewModel: RecorderDelegate {
+    func recorder(_ recorder: Recorder, didFinishRecordingWithResult result: Recorder.RecordingResult) {
+        isRecordEnabled = false
+        isNextEnabled = true
+        statusText = "So, now you can go further with this movie"
     }
 }
